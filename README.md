@@ -1,2 +1,2 @@
 # the_django
-Django Bootstrap CRUD
+A Docker Django Bootstrap CRUD

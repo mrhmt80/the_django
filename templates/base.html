@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	{% include 'snippets/head.html' %}
+</head>
+<body>
+
+	{% include 'snippets/navbar.html' %}
+
+	<!-- content -->
+	<div class="container">
+		<br>
+		<br>
+		<br>
+		{% block content %}
+		{% endblock %}		
+	</div>
+	<!-- end content -->
+
+	<br>
+	<br>
+	{% include 'snippets/footer.html' %}
+
+</body>
+</html>

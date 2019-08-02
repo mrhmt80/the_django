@@ -1,5 +1,12 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from django.template import loader
 
 # Create your views here.
 def index(request):
-	return render(request, 'about/index.html')
+	template = loader.get_template('about/index.html')
+	context = {
+		'judul': 'ini halaman about',
+		'subjudul' : 'selamat datang :)',
+		}
+	return HttpResponse(template.render(context, request))
