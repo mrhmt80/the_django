@@ -1,2 +1,2 @@
 # the_django
-dDjango Bootstrap CRUD
+Django Bootstrap CRUD
