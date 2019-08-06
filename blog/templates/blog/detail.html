@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+	{% load static %}
+	<p>title : {{ post.title }}</p>
+	<p>content : {{ post.content }}</p>
+	<p>link : {{ post.image.url }}</p>
+
+	<img src="{{post.image.url}}">
+	{% if error_message %}
+		<p><strong>{{ error_message }}</strong></p>
+	{% endif %}
+
+{% endblock %}
