@@ -26,6 +26,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('blog/', include('blog.urls')),
     path('about/', include('about.urls')),
+    path('user_post/', include('user_post.urls')),
 ]
 
 if settings.DEBUG:
