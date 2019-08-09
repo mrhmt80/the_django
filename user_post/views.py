@@ -9,44 +9,12 @@ from django.http import HttpResponseRedirect
 
 # Create your views here.
 def index(request):
+	user_post_list = UserPost.objects.order_by('-id')[:5]
 	template = loader.get_template('user_post/index.html')
 	context = {
-		'judul': 'halaman user',
+		'user_post_list': user_post_list,
 	}
-	return HttpResponse(template.render({},request))
-
-# def create(request):
-# 	template = loader.get_template('user_post/create.html')
-# 	context = {
-#         'judul': 'halaman user',
-#     }
-# 	return HttpResponse(template.render({},request))
-
-# def create(request):
-# 	if request.method == 'POST':
-# 		form = UserPostForm(request.POST, request.FILES)
-# 		if form.is_valid():
-# 			# handle_uploaded_file(request.FILES['file'])
-# 			print("Hello World")
-# 			form.save()
-# 			return HttpResponseRedirect('image upload success')
-# 	else:
-# 		form = UserPostForm()
-# 	return render(request, 'user_post/create.html', {'form': form})
-
-# def create(request):
-# 		if request.method == 'POST':
-# 			if request.POST.get('nama') and request.POST.get('picture'):
-# 				print(request.POST.get('nama'))
-# 				post=UserPost()
-# 				post.nama= request.POST.get('nama')
-# 				post.picture= request.POST.get('picture')
-# 				post.save()
-				
-# 				# return render(request, 'user_post/create.html')  
-# 				return HttpResponse('image upload success')
-# 		else:
-# 			return render(request,'user_post/create.html')
+	return HttpResponse(template.render(context, request))
 
 def create(request):
 	if request.method == 'POST':
@@ -61,3 +29,22 @@ def create(request):
 	else:
 		form = UserPostForm()
 	return render(request, 'user_post/create.html', {'form': form})
+
+def edit(request, user_post_id):
+	# user_post_list = UserPost.objects.get(id=user_post_id)
+	# template = loader.get_template('user_post/edit.html')
+	# context = {
+	# 	'user_post_list': user_post_list,
+	# }
+	if request.method == 'POST':
+		form = UserPostForm(request.POST, request.FILES)
+		if form.is_valid():
+			obj = UserPost.objects.get(id=user_post_id)
+			obj.nama = form.cleaned_data['nama']
+			obj.picture = form.cleaned_data['picture']
+			obj.save()
+			return HttpResponseRedirect('/user_post/',{'form':form})
+
+	else:
+		form = UserPostForm()
+	return render(request, 'user_post/edit.html', {'form': form})

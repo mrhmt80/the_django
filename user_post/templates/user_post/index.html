@@ -14,15 +14,26 @@
 	    </tr>
 	  </thead>
 	  <tbody>
-	    <tr>
-	      <th scope="row">1</th>
-	      <td>Mark</td>
-	      <td>Otto</td>
-	      <td>
-	      	<a href="">edit</a> |
-	      	<a href="">delete</a>
-	      </td>
-	    </tr>
+	  	{% if user_post_list %}
+		    
+		    {% for post in user_post_list %}
+		     <tr>
+		     	  <th scope="row">{{ forloop.counter }}</th>
+			      <td>{{ post.nama }}</td>
+			      <td>
+			      	<img src="{{ post.picture.url }}">
+			      </td>
+			      <td>
+			      	<a href="/blog/{{ post.id }}/">show</a> |
+			      	<a href="{{ post.id }}/edit/">edit</a> |
+			      	<a href="">delete</a>
+			      </td>
+		     </tr>
+		    {% endfor %}
+		    
+		{% else %}
+		    <p>No post are available.</p>
+		{% endif %}
 	  </tbody>
 	</table>
 
