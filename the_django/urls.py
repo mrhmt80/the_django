@@ -24,9 +24,12 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
+    path('register/', views.register),
+    path('login/', views.login),
     path('blog/', include('blog.urls')),
     path('about/', include('about.urls')),
     path('user_post/', include('user_post.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 if settings.DEBUG:

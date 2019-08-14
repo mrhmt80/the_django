@@ -18,5 +18,5 @@ urlpatterns = [
     # ex: /polls/5/results/
     path('<int:user_post_id>/edit/', views.edit),
     # ex: /polls/5/vote/
-    # path('<int:user_post_id>/update/', views.update),
+    path('<int:user_post_id>/delete/', views.delete),
 ]

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+	<h1>delete post</h1>
+	<hr>
+  	<form action="." method="POST" enctype="multipart/form-data">
+  		<h1>Hapus ??</h1>
+  		{% csrf_token %}
+		<input type="submit" name="" value="YA">
+	</form>
+{% endblock %}
