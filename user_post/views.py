@@ -45,7 +45,7 @@ def edit(request, user_post_id):
 
 	else:
 		form = UserPostForm()
-	return render(request, 'user_post/edit.html', {'form': form})
+	return render(request, 'user_post/edit.html', {'form': form, 'obj' : obj})
 
 
 def delete(request, user_post_id):

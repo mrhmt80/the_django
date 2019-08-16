@@ -2,9 +2,30 @@
 {% block content %}
 	<h1>edit post</h1>
 	<hr>
+	
+
   	<form action="." method="POST" enctype="multipart/form-data">
   		{% csrf_token %}
-		{{ form.as_p }}
-		<input type="submit" name="" value="submit">
+	<div class="form-group row">
+	    <label for="staticEmail" class="col-sm-2 col-form-label">Nama</label>
+	    <div class="col-sm-10">
+	     <input type="text" name="nama" class="" id="" maxlength="100" required="" value="{{ obj.nama }}">
+	    </div>
+	  </div>
+	  <div class="form-group row">
+	    <label for="inputPassword" class="col-sm-2 col-form-label">Picture</label>
+	    <div class="col-sm-10">
+	    <img src="{{ obj.picture.url }}" id="img">
+	     <p><a href="{{ obj.picture.url }}"> {{ obj.picture.url }} </a></p>
+	     <input type="file" name="picture" accept="image/*" required="" id="uppicture">
+	    </div>
+	  </div>
+	  <input type="submit" name="" value="submit" class="btn btn-success">
 	</form>
+
+
+	<script type="text/javascript">
+			  console.log('masookk');
+
+	</script>
 {% endblock %}
