@@ -8,4 +8,10 @@
   		<input type="submit" name="" value="login">
 	</form>
 
+  <hr>
+  <ul>
+  	<li><a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a></li>
+  	<li><a href="{% url 'social:begin' 'google-oauth2' %}">Login with Gmail</a></li>
+  </ul>
+
 {% endblock %}	

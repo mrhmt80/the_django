@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'blog',
     'about',
     'user_post',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'the_django.urls'
@@ -65,6 +67,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',  # <--
+                'social_django.context_processors.login_redirect', # <--
             ],
         },
     },
@@ -135,3 +139,18 @@ MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = '/user_post/'
 LOGOUT_REDIRECT_URL = '/'
+
+
+# Social Media Authentication Login
+# ===========================
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+SOCIAL_AUTH_FACEBOOK_KEY = 'your app id'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = 'your app secret'  # App Secret
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'google key'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'google secret'

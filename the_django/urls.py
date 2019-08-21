@@ -30,6 +30,7 @@ urlpatterns = [
     path('about/', include('about.urls')),
     path('user_post/', include('user_post.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('oauth/', include('social_django.urls', namespace='social')),
 ]
 
 if settings.DEBUG:
